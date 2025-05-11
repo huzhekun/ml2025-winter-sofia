@@ -1,0 +1,18 @@
+from module5_mod import MyList
+
+n = -1
+
+n = int(input("Please input a positive integer: "))
+
+while n <= 0:
+        print("Not a positive integer")
+        n = int(input("Please input a positive integer: "))
+
+numbers = MyList()
+
+for i in range(n):
+        numbers.append(int(input("Please input a number: ")))
+
+x = int(input("Please input a number to see if it is in the list: "))
+
+print(numbers.findNumber(x))
