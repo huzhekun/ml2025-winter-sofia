@@ -11,17 +11,20 @@ while n <= 0:
 points = numpy.empty((2, n))
 
 for i in range(n):
-        print(i)
         points[0][i] = float(input("Please input x value: "))
         points[1][i] = float(input("Please input y value: "))
 
-x = float(input("Please input x to see k-NN for all k <= n regression: "))
+k = int(input("Please input k for k-NN regression: "))
+while k > n:
+        print("K cannot be larger than number of points")
+        k = int(input("Please input k for k-NN regression: "))
+
+x = float(input("Please input x to see k-NN regression: "))
 
 distanceSortedPoints = numpy.argsort(numpy.array(numpy.abs(points[0] - x)))
 
-for i in range(1,n):
-        estimate = 0
-        for k in range(i):
-                estimate += points[1][distanceSortedPoints[k]]
-        estimate = estimate / i
-        print(str(i) + "-NN estimate: " + str(estimate))
+estimate = 0
+for i in range(k):
+        estimate += points[1][distanceSortedPoints[i]]
+estimate = estimate / k
+print(str(k) + "-NN estimate: " + str(estimate))
